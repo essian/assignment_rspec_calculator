@@ -73,8 +73,34 @@ describe Calculator do
       expect{ calculator.sqrt(-16) }
         .to raise_error(ArgumentError)
     end
+
+    it "returns two digit decimals for non-round numbers" do
+      expect(calculator.sqrt(2)).to eq(1.41)
+    end
   end
 
+  describe 'memory=' do
+    it "starts as nil" do
+      expect(calculator.memory).to eq(nil)
+    end
+
+    it "resets to nil after its retrieved" do
+      calculator.memory=(4)
+      calculator.memory
+      expect(calculator.memory).to eq(nil)
+    end
+
+    it "stores the number in memory" do
+      calculator.memory=(4)
+      expect(calculator.memory).to eq(4)
+    end
+
+    it "stores the number in memory" do
+      calculator.memory=(4)
+      calculator.memory=(3)
+      expect(calculator.memory).to eq(3)
+    end
+  end
 
 
 end
