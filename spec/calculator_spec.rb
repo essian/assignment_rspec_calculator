@@ -5,6 +5,7 @@ require 'calculator'
 describe Calculator do
 
   let(:calculator){ Calculator.new }
+  let(:string_calculator){ Calculator.new(true) }
 
   describe '#add' do
     it "adds two positive numbers" do
@@ -87,7 +88,6 @@ describe Calculator do
     it "resets to nil after its retrieved" do
       calculator.memory=(4)
       calculator.memory
-      expect(calculator.memory).to eq(nil)
     end
 
     it "stores the number in memory" do
@@ -102,5 +102,10 @@ describe Calculator do
     end
   end
 
+  describe 'Stringify' do
+    it "returns a string as output" do
+      expect(string_calculator.add(1, 3)).to eq("4")
+    end
+  end
 
 end
